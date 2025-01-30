@@ -33,3 +33,13 @@ header button {
     display: flex;
     justify-content: center;
 }
+
+#results {
+    border: 2px solid #ff8400;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.section {
+    padding-top: 30px;
+}
