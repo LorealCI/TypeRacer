@@ -1,0 +1,35 @@
+/*google fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+header {
+    background-color: #ff8400;
+    text-align: center;
+}
+
+header h1 {
+    padding: 20px 0;
+    font-family: 'Alegreya', serif;
+}
+
+header button {
+    align-self: center;
+    width: auto;
+    max-width: 200px;
+}
+
+.btn-custom {
+    border: 2px solid #ff8400;
+    background-color: #ffffff;
+    display: block;
+    margin: 0 5px;
+}
+
+.btn-custom:hover {
+    background-color: #ff8400;
+    color: #ffffff;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
