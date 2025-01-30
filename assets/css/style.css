@@ -51,7 +51,3 @@ header button {
     box-shadow: 0 0 10px var(--primary-color);
     text-align: center;
 }
-
-.content-area {
-    font-size: 1.2em; /* Increase font size */
-}
