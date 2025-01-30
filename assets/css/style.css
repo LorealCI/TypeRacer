@@ -1,8 +1,18 @@
 /*google fonts*/
 @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
+:root {
+    --primary-color: #ff8400;
+}
+
+/*global styles*/
+.section {
+    padding-top: 30px;
+}
+
+/*header styles*/
 header {
-    background-color: #ff8400;
+    background-color: var(--primary-color);
     text-align: center;
 }
 
@@ -16,16 +26,17 @@ header button {
     width: auto;
     max-width: 200px;
 }
-
+/*button styles*/
 .btn-custom {
-    border: 2px solid #ff8400;
-    background-color: #ffffff;
+    border: 2px solid var(--primary-color);
     display: block;
     margin: 0 5px;
+    padding: 10px 20px; /* Increase padding */
+    font-size: 1.2em; /* Increase font size */
 }
 
 .btn-custom:hover {
-    background-color: #ff8400;
+    background-color: var(--primary-color);
     color: #ffffff;
 }
 
@@ -33,13 +44,14 @@ header button {
     display: flex;
     justify-content: center;
 }
-
+/*results styles*/
 #results {
-    border: 2px solid #ff8400;
     padding: 10px;
     border-radius: 5px;
+    box-shadow: 0 0 10px var(--primary-color);
+    text-align: center;
 }
 
-.section {
-    padding-top: 30px;
+.content-area {
+    font-size: 1.2em; /* Increase font size */
 }
