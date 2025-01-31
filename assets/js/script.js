@@ -19,13 +19,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const difficultySelect = document.getElementById('difficulty-select');
     const sampleText = document.getElementById('sample-text');
-    const startButton = document.getElementById('start-button');
-    const stopButton = document.getElementById('stop-button');
     const typingArea = document.getElementById('typing-area');
     const resultTime = document.getElementById('result-time');
     const resultWpm = document.getElementById('result-wpm');
     const resultLevel = document.getElementById('result-level');
     let startTime, endTime;
+    let testStarted = false;
 
     function getRandomText(difficulty) {
         const options = texts[difficulty];
@@ -41,8 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function startTest() {
         startTime = new Date();
-        startButton.disabled = true;
-        stopButton.disabled = false;
+        testStarted = true;
         typingArea.disabled = false;
         typingArea.value = '';
         typingArea.focus();
@@ -52,8 +50,6 @@ document.addEventListener('DOMContentLoaded', function() {
         endTime = new Date();
         const timeTaken = (endTime - startTime) / 1000; // time in seconds
         resultTime.textContent = timeTaken.toFixed(2);
-        startButton.disabled = false;
-        stopButton.disabled = true;
         typingArea.disabled = true;
 
         const typedText = typingArea.value.trim();
@@ -73,6 +69,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateTypingFeedback() {
+        if (!testStarted) {
+            startTest();
+        }
+
         const typedText = typingArea.value.trim();
         const sampleWords = sampleText.textContent.trim().split(/\s+/);
         const typedWords = typedText.split(/\s+/);
@@ -91,10 +91,15 @@ document.addEventListener('DOMContentLoaded', function() {
         sampleText.innerHTML = feedbackHtml.trim();
     }
 
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            stopTest();
+        }
+    }
+
     difficultySelect.addEventListener('change', updateSampleText);
-    startButton.addEventListener('click', startTest);
-    stopButton.addEventListener('click', stopTest);
     typingArea.addEventListener('input', updateTypingFeedback);
+    typingArea.addEventListener('keypress', handleKeyPress);
 
     // Initialize with a random text from the default difficulty level
     updateSampleText();
