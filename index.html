@@ -14,9 +14,35 @@
 <body>
     <header class="d-flex flex-column justify-content-center p-3 text-white">
         <h1 class="m-0">TypeRacer</h1>
-        <button class="btn btn-light mt-2" id="instructions-button">Instructions</button>
+        <button class="btn btn-light mt-2" id="instructions-button" data-bs-toggle="modal" data-bs-target="#instructionsModal">Instructions</button>
     </header>
- 
+
+    <!-- Modal -->
+    <div class="modal fade" id="instructionsModal" tabindex="-1" aria-labelledby="instructionsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="instructionsModalLabel">Instructions</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Welcome to TypeRacer! Follow these instructions to take the typing test:</p>
+                    <ol>
+                        <li>Select the difficulty level from the dropdown menu.</li>
+                        <li>Read the sample text displayed in the box below the dropdown menu.</li>
+                        <li>Start typing the sample text in the textarea provided.</li>
+                        <li>Press Enter to stop the test and see your results.</li>
+                        <li>Click the Retry button to start a new test.</li>
+                    </ol>
+                    <p>Good luck and have fun improving your typing speed!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container section">
         <div class="row content-area">
             <div class="col-12 col-md-8">

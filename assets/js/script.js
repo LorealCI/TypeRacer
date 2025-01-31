@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const resultTime = document.getElementById('result-time');
     const resultWpm = document.getElementById('result-wpm');
     const resultLevel = document.getElementById('result-level');
+    const retryButton = document.getElementById('retry-button');
     let startTime, endTime;
     let testStarted = false;
 
@@ -44,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
         typingArea.disabled = false;
         typingArea.value = '';
         typingArea.focus();
+        retryButton.disabled = true;
     }
 
     function stopTest() {
@@ -51,6 +53,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const timeTaken = (endTime - startTime) / 1000; // time in seconds
         resultTime.textContent = timeTaken.toFixed(2);
         typingArea.disabled = true;
+        testStarted = false;
+        retryButton.disabled = false;
 
         const typedText = typingArea.value.trim();
         const sampleWords = sampleText.textContent.trim().split(/\s+/);
@@ -97,9 +101,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    function retryTest() {
+        updateSampleText();
+        startTest();
+    }
+
     difficultySelect.addEventListener('change', updateSampleText);
     typingArea.addEventListener('input', updateTypingFeedback);
     typingArea.addEventListener('keypress', handleKeyPress);
+    retryButton.addEventListener('click', retryTest);
 
     // Initialize with a random text from the default difficulty level
     updateSampleText();
