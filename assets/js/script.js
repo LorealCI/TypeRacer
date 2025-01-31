@@ -72,9 +72,29 @@ document.addEventListener('DOMContentLoaded', function() {
         resultLevel.textContent = difficultySelect.value.charAt(0).toUpperCase() + difficultySelect.value.slice(1);
     }
 
+    function updateTypingFeedback() {
+        const typedText = typingArea.value.trim();
+        const sampleWords = sampleText.textContent.trim().split(/\s+/);
+        const typedWords = typedText.split(/\s+/);
+        let feedbackHtml = '';
+
+        for (let i = 0; i < sampleWords.length; i++) {
+            if (typedWords[i] === undefined) {
+                feedbackHtml += `<span>${sampleWords[i]}</span> `;
+            } else if (sampleWords[i] === typedWords[i]) {
+                feedbackHtml += `<span style="color: blue;">${sampleWords[i]}</span> `;
+            } else {
+                feedbackHtml += `<span style="color: red;">${sampleWords[i]}</span> `;
+            }
+        }
+
+        sampleText.innerHTML = feedbackHtml.trim();
+    }
+
     difficultySelect.addEventListener('change', updateSampleText);
     startButton.addEventListener('click', startTest);
     stopButton.addEventListener('click', stopTest);
+    typingArea.addEventListener('input', updateTypingFeedback);
 
     // Initialize with a random text from the default difficulty level
     updateSampleText();
